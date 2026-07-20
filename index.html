@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kahwa Co. — Slow-Brewed, Reimagined</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== Roast Meter — fills as you scroll, relabels itself by roast stage ===== -->
+<div class="roast-meter" id="roastMeter">
+  <div class="roast-fill" id="roastFill"></div>
+  <span class="roast-label" id="roastLabel">Green Bean</span>
+</div>
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark">☕</span>
+      <span class="logo-text">KAHWA <em>CO.</em></span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#build">Build Your Cup</a></li>
+      <li><a href="#rewards">Bean Rewards</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+        🛍️ <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<header class="hero" id="top">
+  <div class="steam-rig">
+    <span class="steam s1"></span>
+    <span class="steam s2"></span>
+    <span class="steam s3"></span>
+  </div>
+
+  <div class="hero-content">
+    <p class="eyebrow">Est. in a small kitchen, brewed for everyone</p>
+    <h1>Slow-brewed kahwa,<br><span class="accent">reimagined</span> for today.</h1>
+    <p class="hero-sub">Hand-ground cardamom, real saffron threads, and beans roasted in small batches. No syrups pretending to be spice.</p>
+    <div class="hero-cta">
+      <a href="#build" class="btn btn-primary">Build Your Cup</a>
+      <a href="#menu" class="btn btn-ghost">See the Menu</a>
+    </div>
+  </div>
+
+  <div class="cup-illustration" aria-hidden="true">
+    <svg viewBox="0 0 200 200" width="220" height="220">
+      <ellipse cx="100" cy="170" rx="70" ry="10" fill="#1A0F0A" opacity="0.35"/>
+      <path d="M40 70 h100 l-10 80 a20 20 0 0 1 -20 18 h-40 a20 20 0 0 1 -20 -18 Z" fill="#F5EDE0"/>
+      <path d="M40 70 h100 l-4 32 h-92 Z" fill="#4A2E1F"/>
+      <path d="M140 80 q28 0 28 24 q0 24 -28 24" fill="none" stroke="#F5EDE0" stroke-width="8"/>
+    </svg>
+  </div>
+
+  <a class="scroll-cue" href="#menu">scroll to explore ↓</a>
+</header>
+
+<!-- ===== Menu ===== -->
+<section class="menu" id="menu">
+  <div class="section-head">
+    <p class="eyebrow">The Menu</p>
+    <h2>Pick your ritual</h2>
+  </div>
+
+  <div class="menu-tabs" id="menuTabs">
+    <button class="tab active" data-cat="hot">Hot Kahwa</button>
+    <button class="tab" data-cat="cold">Cold Brew</button>
+    <button class="tab" data-cat="pastry">Pastries</button>
+    <button class="tab" data-cat="special">Spice Specials</button>
+  </div>
+
+  <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<!-- ===== Build Your Cup ===== -->
+<section class="build" id="build">
+  <div class="section-head light">
+    <p class="eyebrow">Make It Yours</p>
+    <h2>Build your cup</h2>
+    <p class="section-sub">Choose a base, spin the spice wheel, and watch the price update as you go.</p>
+  </div>
+
+  <div class="build-panel">
+    <div class="build-step">
+      <h3><span class="step-no">01</span> Base</h3>
+      <div class="option-row" id="baseOptions">
+        <button class="option active" data-base="Kahwa" data-price="350">Traditional Kahwa</button>
+        <button class="option" data-base="Espresso" data-price="450">Espresso</button>
+        <button class="option" data-base="Cold Brew" data-price="500">Cold Brew</button>
+      </div>
+    </div>
+
+    <div class="build-step">
+      <h3><span class="step-no">02</span> Size</h3>
+      <div class="option-row" id="sizeOptions">
+        <button class="option" data-size="Small" data-price="0">Small</button>
+        <button class="option active" data-size="Regular" data-price="60">Regular</button>
+        <button class="option" data-size="Large" data-price="120">Large</button>
+      </div>
+    </div>
+
+    <div class="build-step">
+      <h3><span class="step-no">03</span> Spice Wheel <small>(tap any that call to you)</small></h3>
+      <div class="spice-wheel" id="spiceWheel">
+        <button class="spice" data-spice="Cardamom" data-price="30" style="--i:0">🌿<span>Cardamom</span></button>
+        <button class="spice" data-spice="Saffron" data-price="80" style="--i:1">🌼<span>Saffron</span></button>
+        <button class="spice" data-spice="Rose" data-price="40" style="--i:2">🌹<span>Rose</span></button>
+        <button class="spice" data-spice="Cinnamon" data-price="25" style="--i:3">🪵<span>Cinnamon</span></button>
+        <button class="spice" data-spice="Clove" data-price="25" style="--i:4">✨<span>Clove</span></button>
+        <div class="spice-center">Rs. <span id="spiceCenterPrice">0</span></div>
+      </div>
+    </div>
+
+    <div class="build-step">
+      <h3><span class="step-no">04</span> Sweetness <small id="sweetLabel">Medium</small></h3>
+      <input type="range" min="0" max="4" value="2" class="sweet-slider" id="sweetSlider">
+    </div>
+
+    <div class="build-summary">
+      <div class="build-total">
+        <span>Your cup total</span>
+        <strong>Rs. <span id="buildTotal">410</span></strong>
+      </div>
+      <button class="btn btn-primary" id="addBuildToCart">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Bean Rewards ===== -->
+<section class="rewards" id="rewards">
+  <div class="section-head">
+    <p class="eyebrow">Loyalty, Brewed In</p>
+    <h2>Bean Rewards</h2>
+    <p class="section-sub">Every rupee you spend in the cart earns Beans. Beans unlock tiers automatically — no card to carry.</p>
+  </div>
+
+  <div class="rewards-panel">
+    <div class="rewards-track">
+      <div class="rewards-fill" id="rewardsFill"></div>
+      <div class="tier-marker" style="left:0%"><span class="tier-dot active"></span><small>Newcomer</small></div>
+      <div class="tier-marker" style="left:33%"><span class="tier-dot" id="dotRegular"></span><small>Regular</small></div>
+      <div class="tier-marker" style="left:66%"><span class="tier-dot" id="dotSteeped"></span><small>Steeped In</small></div>
+      <div class="tier-marker" style="left:100%"><span class="tier-dot" id="dotMaster"></span><small>Kahwa Master</small></div>
+    </div>
+    <p class="rewards-status">You've earned <strong id="beanCount">0</strong> beans — <span id="rewardsHint">order something to start earning.</span></p>
+  </div>
+</section>
+
+<!-- ===== Story ===== -->
+<section class="story" id="story">
+  <div class="story-visual" aria-hidden="true">
+    <div class="bean-field">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="story-text">
+    <p class="eyebrow">Our Story</p>
+    <h2>Kahwa was never meant to be rushed.</h2>
+    <p>It started as a pot on a stovetop in Hyderabad — cardamom pods cracked by hand, saffron bloomed in warm water, and a kettle that never really went cold. Kahwa Co. is that same pot, scaled up just enough to share with a city.</p>
+    <p>We roast in small batches, source spice direct from growers we've actually met, and refuse to let a drive-thru speed us up. Good kahwa asks for four minutes. We think you have four minutes.</p>
+    <div class="story-stats">
+      <div><strong>7</strong><span>spice blends</span></div>
+      <div><strong>04:00</strong><span>min steep time</span></div>
+      <div><strong>0</strong><span>artificial syrups</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Testimonials ===== -->
+<section class="testimonials">
+  <div class="section-head">
+    <p class="eyebrow">From the Regulars</p>
+    <h2>What keeps people coming back</h2>
+  </div>
+  <div class="testimonial-carousel" id="testimonialCarousel">
+    <div class="t-slide active">
+      <p>"The saffron kahwa ruined every other coffee shop for me. It actually tastes like someone's grandmother made it."</p>
+      <span>— Sana R.</span>
+    </div>
+    <div class="t-slide">
+      <p>"I built a cardamom + rose cold brew on the customizer and now it's just... my order. Every time."</p>
+      <span>— Bilal K.</span>
+    </div>
+    <div class="t-slide">
+      <p>"Vedhi helped me figure out a dairy-free build in about ten seconds flat. Better than asking a human, honestly."</p>
+      <span>— Areeba N.</span>
+    </div>
+  </div>
+  <div class="t-dots" id="tDots"></div>
+</section>
+
+<!-- ===== Visit / Newsletter ===== -->
+<section class="visit" id="visit">
+  <div class="visit-grid">
+    <div class="visit-info">
+      <p class="eyebrow">Visit</p>
+      <h2>Come sit with us</h2>
+      <ul class="hours">
+        <li><span>Mon – Thu</span><span>8:00 AM – 10:00 PM</span></li>
+        <li><span>Fri</span><span>2:00 PM – 11:00 PM</span></li>
+        <li><span>Sat – Sun</span><span>9:00 AM – 11:00 PM</span></li>
+      </ul>
+      <p class="address">Latifabad Unit No. 7, Hyderabad, Sindh</p>
+    </div>
+    <form class="newsletter" id="newsletterForm">
+      <p class="eyebrow">Stay Steeped</p>
+      <h3>Get the seasonal blend drop first</h3>
+      <div class="newsletter-row">
+        <input type="email" placeholder="you@email.com" required id="newsletterEmail">
+        <button type="submit" class="btn btn-primary">Join</button>
+      </div>
+      <p class="fine-print">One email a month. Mostly about spice.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark">☕</span>
+      <span class="logo-text">KAHWA <em>CO.</em></span>
+    </div>
+    <p>&copy; 2026 Kahwa Co. Brewed slow, served warm.</p>
+  </div>
+</footer>
+
+<!-- ===== Cart Drawer ===== -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button id="cartClose" aria-label="Close cart">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Your cart's as empty as a kettle before kahwa. Add something from the menu.</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <strong>Rs. <span id="cartTotal">0</span></strong>
+    </div>
+    <button class="btn btn-primary btn-full" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+
+<!-- ===== Vedhi — AI Chat Assistant ===== -->
+<button class="vedhi-toggle" id="vedhiToggle" aria-label="Open Vedhi chat">
+  <span class="vedhi-avatar">🪆</span>
+</button>
+
+<div class="vedhi-panel" id="vedhiPanel">
+  <div class="vedhi-header">
+    <div class="vedhi-title">
+      <span class="vedhi-avatar small">🪆</span>
+      <div>
+        <h4>Vedhi</h4>
+        <small>your kahwa guide</small>
+      </div>
+    </div>
+    <button id="vedhiClose" aria-label="Close chat">&times;</button>
+  </div>
+  <div class="vedhi-messages" id="vedhiMessages"></div>
+  <div class="vedhi-quick" id="vedhiQuick">
+    <button data-q="hours">Opening hours</button>
+    <button data-q="best seller">Best seller?</button>
+    <button data-q="dairy free">Dairy-free options</button>
+    <button data-q="rewards">How do Bean Rewards work?</button>
+  </div>
+  <div class="vedhi-input-row">
+    <input type="text" id="vedhiInput" placeholder="Ask Vedhi anything about Kahwa Co...">
+    <button id="vedhiSend" aria-label="Send">➤</button>
+  </div>
+</div>
+
+<!-- ===== Toast ===== -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
